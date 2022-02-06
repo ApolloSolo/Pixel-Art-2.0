@@ -22,12 +22,17 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Geostar&family=Gowun+Batang&family=Keania+One&family=Kumar+One+Outline&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a id="appsolo" class="navbar-brand" href="#">
+              AppSolo Tech.
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -79,18 +84,24 @@
     </header>
 
     <main class="main-container">
+        <h1>Pixel Art</h1>
       <div class="start">
-        <h1>Welcome To Pixel Art 2.0</h1>
         <form id="pixel-form">
-          <input id="pixel-input" name="pixel-input" type="number" />
-          <button id="add-pix-btn">Add Pixels</button>
+            <button class="btn btn-success" id="add-pix-btn">Add Pixels</button>
+          <input class="form-control" id="pixel-input" name="pixel-input" type="number" />
         </form>
+        <button class="btn btn-warning mb-2" id="reset">Reset</button>
+      </div>
 
-        <button id="reset">Reset</button>
+      <div class="color-div">
+          <p>Choose Your Color</p>
+          <input name="color" type="color">
       </div>
+
       <div class="grid-container">
-        
+
       </div>
+
     </main>
 
     <script src="./assets/js/app.js" async defer></script>

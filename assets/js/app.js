@@ -2,6 +2,7 @@ const mainContainer = document.querySelector(".main-container");
 const gridContainer = document.querySelector(".grid-container");
 const pixelForm = document.querySelector("#pixel-form");
 const resetBtn = document.querySelector("#reset");
+const colorPicker = document.querySelector("input[name='color']");
 
 let pixelCounter = 0;
 
@@ -55,12 +56,17 @@ const pixelClickHandler = function(e){
 
 const editColor = function(pixelId){
     const pixelSelected = document.querySelector(".pixel[data-pixel-id='" + pixelId + "']");
-    if(!pixelSelected.classList.contains("pixel-black")){
-        pixelSelected.classList.add("pixel-black");
+    let pixelColor = colorChangeHandler();
+    console.log(pixelColor);
+    if(pixelSelected){
+        pixelSelected.style.backgroundColor = pixelColor;
     }
-    else if(pixelSelected.classList.contains("pixel-black")){
-        pixelSelected.classList.remove("pixel-black");
-    }
+}
+
+const colorChangeHandler = function() {
+    let color = colorPicker.value;
+    //console.log(color);
+    return color
 }
 
 //Event listeners
@@ -87,3 +93,5 @@ resetBtn.addEventListener('click', (e) => {
 gridContainer.addEventListener('click', (e) => {
     pixelClickHandler(e);
 })
+
+colorPicker.addEventListener('change', colorChangeHandler);

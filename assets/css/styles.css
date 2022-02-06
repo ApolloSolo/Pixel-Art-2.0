@@ -1,13 +1,38 @@
+
+
 *{box-sizing: border-box;}
 body{padding: 0; margin: 0; height: 100vh;}
+
+#appsolo{
+    font-family: 'Geostar', cursive;
+}
+
+h2{
+    text-align: center;
+}
+
+.start, form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form{
+    margin-bottom: 0.5rem;
+}
+
+form button{
+    margin-bottom: .5rem;
+}
 
 .main-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 3rem;
+    padding-top: 1rem;
     min-height: 100%;
     background-color: rgb(65, 180, 180);
+    position: relative;
 }
 
 .pixel-grid{
@@ -16,7 +41,7 @@ body{padding: 0; margin: 0; height: 100vh;}
 }
 
 .pixel{
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     width: 50px;
     height: 50px;
     border: solid black 1px;
@@ -29,10 +54,54 @@ body{padding: 0; margin: 0; height: 100vh;}
     border: solid rgb(255, 255, 255) 1px;
 }
 
+.color-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    background-color: aqua;
+    top: 2px;
+    border: solid black 1px;
+    border-radius: .25rem;
+    padding: .125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.color-div p {
+    margin: 0 .5rem 0 0;
+}
+
 @media screen and (min-width: 635px) {
 
     .pixel-grid{
         display: grid;
         grid-template-columns: repeat(12, auto);
+    }
+}
+
+@media screen and (min-width: 655px) {
+
+    .color-div{
+        flex-direction: column;
+    }
+    .color-div p{
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+
+    .pixel-grid{
+        display: grid;
+        grid-template-columns: repeat(18, auto);
+    }
+}
+
+@media screen and (min-width: 1250px) {
+
+    .pixel-grid{
+        display: grid;
+        grid-template-columns: repeat(24, auto);
     }
 }
