@@ -1,66 +1,89 @@
 const mainContainer = document.querySelector(".main-container");
 const gridContainer = document.querySelector(".grid-container");
-const pixleForm = document.querySelector("#pixle-form");
+const pixelForm = document.querySelector("#pixel-form");
 const resetBtn = document.querySelector("#reset");
 
-let pixleCounter = 0;
+let pixelCounter = 0;
 
-//handles form data, creates and adds pixles
+//handles form data, creates and adds pixels
 const formHandler = function(e) {
     e.preventDefault()
-    const numPixles = document.querySelector("input[name='pixle-input']").value;
+    const numPixels = document.querySelector("input[name='pixel-input']").value;
     
-    if(!numPixles){
-        alert("You need to choose a number of pixles")
+    if(!numPixels){
+        alert("You need to choose a number of pixels")
         return false;
     }
 
-    displayPixles(numPixles);
+    displayPixels(numPixels);
 
-    pixleForm.reset();
+    pixelForm.reset();
 }
 
-//Makes grid div the pixles will be in
-const makePixleGrid = function(){
-    const pixleGrid = document.createElement('div')
-    pixleGrid.className = "pixle-grid"
-    gridContainer.appendChild(pixleGrid);
+//Makes grid div the pixels will be in
+const makePixelGrid = function(){
+    const pixelGrid = document.createElement('div')
+    pixelGrid.className = "pixel-grid"
+    gridContainer.appendChild(pixelGrid);
 }
 
-//Makes the pixles
-const makePixle = function(){
-    const newPixle = document.createElement('div');
-    newPixle.className = 'pixle';
-    newPixle.setAttribute("data-pixle-id", pixleCounter);
-    pixleCounter++;
-    return newPixle;
+//Makes the pixels
+const makePixel = function(){
+    const newPixel = document.createElement('div');
+    newPixel.className = 'pixel';
+    newPixel.setAttribute("data-pixel-id", pixelCounter);
+    pixelCounter++;
+    return newPixel;
 }
 
-//Calls function to make grid, makes, and adds number of pixles
-const displayPixles = function (num) {
-    makePixleGrid();
-    const pixleGrid = document.querySelector(".pixle-grid");
+//Calls function to make grid, makes, and adds number of pixels
+const displayPixels = function (num) {
+    makePixelGrid();
+    const pixelGrid = document.querySelector(".pixel-grid");
     for(let i = 0; i < num; i++){
-        const pixle = makePixle();
-        pixleGrid.appendChild(pixle);
+        const pixel = makePixel();
+        pixelGrid.appendChild(pixel);
+    }
+}
+
+const pixelClickHandler = function(e){
+    if(e.target.matches(".pixel")){
+        const pixelId = e.target.getAttribute('data-pixel-id');
+        editColor(pixelId);
+      }
+}
+
+const editColor = function(pixelId){
+    const pixelSelected = document.querySelector(".pixel[data-pixel-id='" + pixelId + "']");
+    if(!pixelSelected.classList.contains("pixel-black")){
+        pixelSelected.classList.add("pixel-black");
+    }
+    else if(pixelSelected.classList.contains("pixel-black")){
+        pixelSelected.classList.remove("pixel-black");
     }
 }
 
 //Event listeners
 
-//adds pixles when number submited
-pixleForm.addEventListener('submit', (e) => {
+//adds pixels when number submited
+pixelForm.addEventListener('submit', (e) => {
     formHandler(e);
 })
 
-//reset pixles
+//reset pixels
 resetBtn.addEventListener('click', (e) => {
-    const pixleGrid = document.querySelector(".pixle-grid");
-    if(pixleGrid){
-        pixleGrid.remove();
+    const pixelGrid = document.querySelector(".pixel-grid");
+    if(pixelGrid){
+        pixelGrid.remove();
+        pixelCounter = 0;
     }
     else{
-        alert("There are no pixles to remove");
+        alert("There are no pixels to remove");
         return false;
     }
+});
+
+//main event listener
+gridContainer.addEventListener('click', (e) => {
+    pixelClickHandler(e);
 })
