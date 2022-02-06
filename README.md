@@ -1,2 +1,2 @@
 # Pixel-Art-2.0
-Second iteration of pixel art
+Express your artistic self with the second iteration of [Pixel Art!](https://google)
